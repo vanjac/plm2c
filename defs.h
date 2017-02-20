@@ -1,7 +1,7 @@
 /*
  *	Maximum number of characters in a token
  */
-#define	MAX_TOKEN_LENGTH 512
+#define	MAX_TOKEN_LENGTH 2048
 
 /*
  *	Maximum number of characters in an individual DO CASE statement
