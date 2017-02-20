@@ -1,1 +1,3 @@
 *.o
+plm2c
+test.c
