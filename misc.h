@@ -40,7 +40,19 @@ typedef	unsigned char	BOOLEAN;
 
 #define NONE	0
 
-char	*strcat(), *strncat(), *strcpy(), *strncpy();
+#ifndef strcat
+char *strcat();
+#endif
+#ifndef strncat
+char *strncat();
+#endif
+#ifndef strcpy
+char *strcpy();
+#endif
+#ifndef strncpy
+char *strncpy();
+#endif
+
 #ifdef IBMPC
 int	sprintf();
 #endif
