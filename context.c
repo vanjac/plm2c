@@ -16,10 +16,8 @@ CONTEXT		*old_context;
  *	Search DECL_MEMBER list for symbol and if found, return TRUE
  *	and pointer to DECL_ID for that symbol.
  */
-find_member_symbol(symbol, decl_ptr, decl_id)
-TOKEN		*symbol;
-DECL_MEMBER	*decl_ptr;
-DECL_ID		**decl_id;
+BOOLEAN find_member_symbol(TOKEN *symbol, DECL_MEMBER *decl_ptr,
+                           DECL_ID **decl_id)
 {
 	DECL_ID	*var_ptr;
 
@@ -40,10 +38,8 @@ DECL_ID		**decl_id;
  *	in decl_found, and return TRUE.
  *	If not found, return null pointer in decl_found, and return FALSE.
  */
-find_list_symbol(symbol, decl_ptr, decl_found, decl_id)
-TOKEN		*symbol;
-DECL_MEMBER	*decl_ptr, **decl_found;
-DECL_ID		**decl_id;
+BOOLEAN find_list_symbol(TOKEN *symbol, DECL_MEMBER *decl_ptr,
+                         DECL_MEMBER **decl_found, DECL_ID **decl_id)
 {
 	for (*decl_found = decl_ptr; *decl_found;
 			*decl_found = (*decl_found)->next_member) {
@@ -61,10 +57,8 @@ DECL_ID		**decl_id;
  *	If not found, return null pointers in decl_found and decl_id,
  *	and return FALSE.
  */
-find_symbol(symbol, decl_found, decl_id)
-TOKEN		*symbol;
-DECL_MEMBER	**decl_found;
-DECL_ID		**decl_id;
+BOOLEAN find_symbol(TOKEN *symbol, DECL_MEMBER **decl_found,
+                    DECL_ID **decl_id)
 {
 	CONTEXT	*context_ptr;
 
@@ -80,8 +74,7 @@ DECL_ID		**decl_id;
 /*
  *	Add a declaration to current context
  */
-add_to_context(decl)
-DECL_MEMBER	*decl;
+void add_to_context(DECL_MEMBER *decl)
 {
 	DECL_MEMBER	*decl_ptr;
 
@@ -97,8 +90,7 @@ DECL_MEMBER	*decl;
 /*
  *	Add a DECL list to context and NULL the list pointer
  */
-add_decl_to_context(decl)
-DECL	*decl;
+void add_decl_to_context(DECL *decl)
 {
 	DECL	*decl_ptr;
 
@@ -113,9 +105,7 @@ DECL	*decl;
 /*
  *	Push a new context of specified type and name
  */
-new_context(type, name)
-int	type;
-TOKEN	*name;
+void new_context(int type, TOKEN *name)
 {
 	CONTEXT	*new_context;
 
@@ -133,7 +123,7 @@ TOKEN	*name;
 /*
  *	Pop current context and place on old context
  */
-pop_context()
+void pop_context(void)
 {
 	CONTEXT	*popped_context;
 
@@ -146,7 +136,7 @@ pop_context()
 /*
  *	Initializes context pointers
  */
-init_context()
+void init_context(void)
 {
 	context_head = NULL;
 	old_context = NULL;

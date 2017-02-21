@@ -30,7 +30,7 @@ FILE	*fopen();
 /*
  *	Get list of AT declaration variables for EXTERNAL declaration checks
  */
-get_at_decl()
+void get_at_decl(void)
 {
 	int	i, fd;
 	char	ch;
@@ -71,8 +71,7 @@ get_at_decl()
 /*
  *	Open specified file, init options, and parse.
  */
-cvt_file(file_name)
-char	*file_name;
+void cvt_file(char *file_name)
 {
 	int		fd, nr;
 	struct	stat	file_stat;
@@ -207,9 +206,7 @@ char	*file_name;
 /*
  *	Open file and init options
  */
-main(argc, argv)
-int	argc;
-char	*argv[];
+void main(int argc, char *argv[])
 {
 	int	i;
 	char	ch;

@@ -11,9 +11,7 @@ extern	char	at_decl_list[MAX_AT_DECLS][MAX_TOKEN_LENGTH];
 /*
  *	Output *<name> if use_parens == NULL, else (*<name>).
  */
-out_pointer(name, use_parens)
-TOKEN	*name;
-BOOLEAN	use_parens;
+void out_pointer(TOKEN *name, BOOLEAN use_parens)
 {
 		/* Use parentheses? */
 	if (use_parens) {
@@ -31,8 +29,7 @@ BOOLEAN	use_parens;
 /*
  *	Output array bound (if any)
  */
-out_bound(bound)
-TOKEN	*bound;
+void out_bound(TOKEN *bound)
 {
 	if (bound) {
 		out_char('[');
@@ -44,8 +41,7 @@ TOKEN	*bound;
 /*
  *	Output a declaration type.
  */
-out_decl_type(decl_ptr)
-DECL_MEMBER	*decl_ptr;
+void out_decl_type(DECL_MEMBER *decl_ptr)
 {
 	if (decl_ptr->type->token_type != STRUCTURE) {
 		out_type(decl_ptr->type->token_type);
@@ -57,8 +53,7 @@ DECL_MEMBER	*decl_ptr;
 /*
  *	Output structure contents.
  */
-out_struct(el_ptr)
-DECL_MEMBER	*el_ptr;
+void out_struct(DECL_MEMBER *el_ptr)
 {
 	DECL_ID		*var_ptr;
 
@@ -91,9 +86,7 @@ DECL_MEMBER	*el_ptr;
 /*
  *	Output C declaration list member.
  */
-out_decl_member(decl_list, decl_token)
-DECL_MEMBER	*decl_list;
-TOKEN		*decl_token;
+void out_decl_member(DECL_MEMBER *decl_list, TOKEN *decl_token)
 {
 	int	i;
 	TOKEN	token, tmp_token;
@@ -394,8 +387,7 @@ TOKEN		*decl_token;
 #endif
 }
 
-out_decl(decl)
-DECL		*decl;
+void out_decl(DECL *decl)
 {
 	DECL_MEMBER	*decl_list;
 

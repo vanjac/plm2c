@@ -20,8 +20,7 @@ extern	char	current_file_name[];
  *	get_token() -	Fetch a token from the buffer and return type,
  *			pointer and associated white space.
  */
-get_token(token)
-TOKEN	*token;
+int get_token(TOKEN *token)
 {
     RESERVED_WORD	*word_ptr;
     RESERVED_OPERATOR	*op_ptr;
@@ -464,8 +463,7 @@ TOKEN	*token;
 /*
  *	Copy source token to destination token
  */
-token_copy(src, dest)
-TOKEN	*src, *dest;
+void token_copy(TOKEN *src, TOKEN *dest)
 {
 	dest->token_class = src->token_class;
 	dest->token_type = src->token_type;

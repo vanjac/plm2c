@@ -17,8 +17,7 @@ extern	char	*out_string;
  *	Parse a procedure parameter list.
  *	Return head of linked list of parameters.
  */
-get_param_list(param_head)
-PARAM_LIST	**param_head;
+void get_param_list(PARAM_LIST **param_head)
 {
 	PARAM_LIST	*list_ptr, *param_ptr;
 	int		token_class;
@@ -56,9 +55,8 @@ PARAM_LIST	**param_head;
  *	param_list and those not.  Return pointers to head of both
  *	DECL_MEMBER lists.
  */
-parse_param_list(param_list, decl_list, extra_decl_list)
-PARAM_LIST	*param_list;
-DECL		**decl_list, **extra_decl_list;
+void parse_param_list(PARAM_LIST *param_list, DECL **decl_list,
+                      DECL **extra_decl_list)
 {
 	DECL		*extra_decl, *extra_decl_ptr;
 	DECL		*list, *list_ptr;
@@ -236,9 +234,7 @@ DECL		**decl_list, **extra_decl_list;
 /*
  *	Parse until desired token type appears
  */
-parse_till(type, token)
-int	type;
-TOKEN	*token;
+void parse_till(int type, TOKEN *token)
 {
 	while (get_token(token) != type)
 		out_token(token);
@@ -247,8 +243,7 @@ TOKEN	*token;
 /*
  *	Parse until END statement
  */
-parse_till_end(token)
-TOKEN	*token;
+void parse_till_end(TOKEN *token)
 {
 	int	token_class;
 
@@ -270,7 +265,7 @@ TOKEN	*token;
 /*
  *	Parse through END statement
  */
-parse_to_end()
+void parse_to_end(void)
 {
 	TOKEN	token;
 
@@ -281,7 +276,7 @@ parse_to_end()
 /*
  *	Check for end of line (';')
  */
-check_eol()
+void check_eol(void)
 {
 	TOKEN	token;
 
@@ -297,8 +292,7 @@ check_eol()
  *	Returns with next_token terminating variable.
  *	Handles [ .<identifier> ] ...
  */
-parse_simple_variable(token, next_token)
-TOKEN	*token, *next_token;
+int parse_simple_variable(TOKEN *token, TOKEN *next_token)
 {
 	int	token_class;
 
@@ -326,10 +320,7 @@ TOKEN	*token, *next_token;
  *	If variable has BASED attribute, output (*based_name).
  *	Otherwise, output ident.
  */
-out_ident(ident, decl, decl_id)
-TOKEN		*ident;
-DECL_MEMBER	*decl;
-DECL_ID		*decl_id;
+void out_ident(TOKEN *ident, DECL_MEMBER *decl, DECL_ID *decl_id)
 {
 	if (decl->at_ptr || decl_id->is_ext_at) {
 		out_white_space(ident);
@@ -353,10 +344,7 @@ DECL_ID		*decl_id;
  *	Returns with token terminating variable.
  *	Handles <member> { [ ( <expression> ) ] [ .<identifier> ] }
  */
-parse_member(token, decl, decl_id)
-TOKEN		*token;
-DECL_MEMBER	*decl;
-DECL_ID		*decl_id;
+int parse_member(TOKEN *token, DECL_MEMBER *decl, DECL_ID *decl_id)
 {
 	int		token_class;
 	TOKEN		member;
@@ -450,10 +438,8 @@ DECL_ID		*decl_id;
  *	Returns with token terminating variable.
  *	Handles { [ ( <expression> ) ] [ .<identifier> ] } ...
  */
-parse_variable(token, var_decl, var_decl_id)
-TOKEN		*token;
-DECL_MEMBER	**var_decl;
-DECL_ID		**var_decl_id;
+int parse_variable(TOKEN *token, DECL_MEMBER **var_decl,
+                   DECL_ID **var_decl_id)
 {
 	if (!find_symbol(token, var_decl, var_decl_id)) {
 		parse_error("Undefined variable");
@@ -467,10 +453,7 @@ DECL_ID		**var_decl_id;
  *	See if token is in cvt_list.
  *	If found, return pointer to conversion string.
  */
-check_cvt_id(token, cvt_id, cvt_string)
-TOKEN	*token;
-CVT_ID	*cvt_id;
-char	**cvt_string;
+BOOLEAN check_cvt_id(TOKEN *token, CVT_ID *cvt_id, char **cvt_string)
 {
 		/* Check each string in cvt_id */
 	while (*(cvt_id->id_name)) {
@@ -489,8 +472,7 @@ char	**cvt_string;
 /*
  *	Parse function call
  */
-parse_function(token)
-TOKEN	*token;
+int parse_function(TOKEN *token)
 {
 	int		token_class;
 	BOOLEAN		left_shift, right_shift;
@@ -593,8 +575,7 @@ TOKEN	*token;
  *	Parse expression and output appropriate tokens.
  *	Return token at end of expression.
  */
-parse_expression(token)
-TOKEN	*token;
+int parse_expression(TOKEN *token)
 {
     int		token_class;
     int		i, last_class, temp_class;
@@ -765,8 +746,7 @@ TOKEN	*token;
  *	DO statement
  *	Handles DO;, DO CASE, DO WHILE, and iterative DO
  */
-parse_do(first_token)
-TOKEN	*first_token;
+void parse_do(TOKEN *first_token)
 {
 	TOKEN		token;
 	int		token_class;
@@ -931,8 +911,7 @@ TOKEN	*first_token;
  *	END statement
  *	Handles END [ <identifier> ] ;
  */
-parse_end(first_token)
-TOKEN	*first_token;
+void parse_end(TOKEN *first_token)
 {
 	TOKEN	token;
 	int	token_class;
@@ -960,8 +939,7 @@ TOKEN	*first_token;
 /*
  *	IF statement
  */
-parse_if(first_token)
-TOKEN	*first_token;
+void parse_if(TOKEN *first_token)
 {
 	TOKEN	token;
 
@@ -981,7 +959,7 @@ TOKEN	*first_token;
 /*
  *	THEN statement
  */
-parse_then()
+void parse_then(void)
 {
 	parse_error("Illegal use of THEN");
 }
@@ -989,8 +967,7 @@ parse_then()
 /*
  *	ELSE statement
  */
-parse_else(first_token)
-TOKEN	*first_token;
+void parse_else(TOKEN *first_token)
 {
 	out_white_space(first_token);
 	out_str("else");
@@ -999,8 +976,7 @@ TOKEN	*first_token;
 /*
  *	GOTO statement
  */
-parse_goto(first_token)
-TOKEN	*first_token;
+void parse_goto(TOKEN *first_token)
 {
 	TOKEN	token;
 
@@ -1018,8 +994,7 @@ TOKEN	*first_token;
 /*
  *	GO TO statement
  */
-parse_go(first_token)
-TOKEN	*first_token;
+void parse_go(TOKEN *first_token)
 {
 	TOKEN	token;
 
@@ -1033,8 +1008,7 @@ TOKEN	*first_token;
  *	CALL statement
  *	Handles CALL <procedure name> [ ( <parameter list> ) ] ;
  */
-parse_call(first_token)
-TOKEN	*first_token;
+void parse_call(TOKEN *first_token)
 {
 	TOKEN		token;
 	int		token_class;
@@ -1117,8 +1091,7 @@ TOKEN	*first_token;
  *	RETURN statement
  *	Handles RETURN [ <expression> ] ;
  */
-parse_return(first_token)
-TOKEN	*first_token;
+void parse_return(TOKEN *first_token)
 {
 	TOKEN	token;
 	int	token_class;
@@ -1139,8 +1112,7 @@ TOKEN	*first_token;
  *		Assignment
  *		Procedure statement
  */
-parse_identifier(first_token)
-TOKEN	*first_token;
+void parse_identifier(TOKEN *first_token)
 {
 	TOKEN		token, next_token;
 	TOKEN		param_token, attrib_token, type_token;
@@ -1417,7 +1389,7 @@ TOKEN	*first_token;
 /*
  *	Statement started with ':'
  */
-parse_label()
+void parse_label(void)
 {
 	parse_error("Illegal label");
 }
@@ -1425,8 +1397,7 @@ parse_label()
 /*
  *	End of line (Null statement)
  */
-parse_eol(first_token)
-TOKEN	*first_token;
+void parse_eol(TOKEN *first_token)
 {
 	out_white_space(first_token);
 	out_char(';');
@@ -1435,8 +1406,7 @@ TOKEN	*first_token;
 /*
  *	ENABLE or DISABLE statement
  */
-parse_int_ctl(first_token)
-TOKEN	*first_token;
+void parse_int_ctl(TOKEN *first_token)
 {
 	TOKEN	token;
 	int	token_class;
@@ -1456,7 +1426,7 @@ TOKEN	*first_token;
  *	OUTPUT, OUTWORD or OUTHWORD statement of form:
  *		OUTPUT(port) = expr;
  */
-parse_outport()
+void parse_outport(void)
 {
 	TOKEN	token;
 	int	token_class;
@@ -1492,8 +1462,7 @@ parse_outport()
 /*
  *	OUTPUT statement
  */
-parse_output(first_token)
-TOKEN	*first_token;
+void parse_output(TOKEN *first_token)
 {
 	out_white_space(first_token);
 	out_str(FUNC_OUTPUT);
@@ -1503,8 +1472,7 @@ TOKEN	*first_token;
 /*
  *	OUTWORD statement
  */
-parse_outword(first_token)
-TOKEN	*first_token;
+void parse_outword(TOKEN *first_token)
 {
 	out_white_space(first_token);
 	out_str(FUNC_OUTWORD);
@@ -1514,8 +1482,7 @@ TOKEN	*first_token;
 /*
  *	OUTHWORD statement
  */
-parse_outhword(first_token)
-TOKEN	*first_token;
+void parse_outhword(TOKEN *first_token)
 {
 	out_white_space(first_token);
 	out_str(FUNC_OUTHWORD);

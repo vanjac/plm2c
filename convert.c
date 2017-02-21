@@ -17,8 +17,7 @@ extern	int	line_count;
  *	Determine statement type and call appropriate parse routine.
  *	Return statement class or, if a reserved word, reserved word token.
  */
-parse_statement(first_token)
-TOKEN	*first_token;
+int parse_statement(TOKEN *first_token)
 {
 	int	token_type;
 
@@ -128,7 +127,7 @@ TOKEN	*first_token;
 	return first_token->token_class;
 }
 
-parse_new_statement()
+int parse_new_statement(void)
 {
 	TOKEN		first_token;
 
@@ -138,7 +137,7 @@ parse_new_statement()
 	return parse_statement(&first_token);
 }
 
-parse_file()
+void parse_file(void)
 {
 	while (parse_new_statement() != END_OF_FILE) ;
 }

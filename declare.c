@@ -14,7 +14,7 @@ extern	char	*out_string;
 /*
  *	Skip to closing right parenthesis
  */
-find_right_paren()
+void find_right_paren(void)
 {
 	TOKEN	token;
 	int	token_class;
@@ -34,8 +34,7 @@ find_right_paren()
 /*
  *	Copy an element from source to destination
  */
-element_copy(src, dest)
-DECL_MEMBER	*src, *dest;
+void element_copy(DECL_MEMBER *src, DECL_MEMBER *dest)
 {
 		/* Don't copy name list */
 	dest->name_list = NULL;
@@ -58,9 +57,7 @@ DECL_MEMBER	*src, *dest;
  *		( <id> [BASED <id>[.<id>]] [ ,<id> [BASED <id>[.<id>]] ] ... )
  *	Return token following variable list.
  */
-get_var_list(list_ptr, sep_token)
-DECL_ID	**list_ptr;
-TOKEN	*sep_token;
+int get_var_list(DECL_ID **list_ptr, TOKEN *sep_token)
 {
 	DECL_ID	*var_ptr, *last_var;
 	TOKEN	*token;
@@ -171,8 +168,7 @@ TOKEN	*sep_token;
  *		where:
  *	<member> ::= { <id> | ( <id> [ ,<id> ] ... ) } [ ( <numeric> ) ] <type>
  */
-parse_structure(list_ptr)
-DECL_MEMBER	**list_ptr;
+void parse_structure(DECL_MEMBER **list_ptr)
 {
 	DECL_MEMBER	*struct_ptr, *last_struct;
 	TOKEN		token;
@@ -224,9 +220,7 @@ DECL_MEMBER	**list_ptr;
  *	Passed initial token.
  *	Returns RESERVED if appropriate type found, else returns END_OF_LINE.
  */
-parse_type(el_ptr, token)
-DECL_MEMBER	*el_ptr;
-TOKEN		*token;
+int parse_type(DECL_MEMBER *el_ptr, TOKEN *token)
 {
 	TOKEN	*temp_token;
 	int	token_class;
@@ -286,9 +280,7 @@ TOKEN		*token;
  *	Parse a DECLARE element.
  *	Return token terminating DECLARE element.
  */
-get_element(element, token)
-DECL_MEMBER	**element;
-TOKEN		*token;
+int get_element(DECL_MEMBER **element, TOKEN *token)
 {
 	DECL_MEMBER	*el_ptr;
 	TOKEN		temp_token, eof_token;
@@ -466,8 +458,7 @@ TOKEN		*token;
  *	Parse a DECLARE list.
  *	Passed a pointer to a DECL, returns with DECL filled.
  */
-get_decl_list(decl)
-DECL	*decl;
+void get_decl_list(DECL *decl)
 {
 	DECL_MEMBER	*el_ptr, *decl_ptr;
 	TOKEN		token;
@@ -494,8 +485,7 @@ DECL	*decl;
 /*
  *	Parse a DECLARE statement.
  */
-parse_declare(first_token)
-TOKEN	*first_token;
+void parse_declare(TOKEN *first_token)
 {
 	DECL		decl;
 

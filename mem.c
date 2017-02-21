@@ -13,8 +13,7 @@
 /*
  *	Allocate memory
  */
-char *get_mem(size)
-unsigned int	size;
+char *get_mem(unsigned int size)
 {
 	char	*malloc_ptr;
 	void	*malloc();
@@ -29,8 +28,7 @@ unsigned int	size;
 /*
  *	Generate a new context.
  */
-get_context_ptr(context)
-CONTEXT	**context;
+void get_context_ptr(CONTEXT **context)
 {
 	*context = (CONTEXT *) get_mem(sizeof(CONTEXT));
 	(*context)->decl_head = NULL;
@@ -40,8 +38,7 @@ CONTEXT	**context;
 /*
  *	Malloc memory for a TOKEN.
  */
-get_token_ptr(token)
-TOKEN	**token;
+void get_token_ptr(TOKEN **token)
 {
 	*token = (TOKEN *) get_mem(sizeof(TOKEN));
 }
@@ -49,8 +46,7 @@ TOKEN	**token;
 /*
  *	Malloc memory for a DECL_ID.
  */
-get_var_ptr(var)
-DECL_ID	**var;
+void get_var_ptr(DECL_ID **var)
 {
 	*var = (DECL_ID *) get_mem(sizeof(DECL_ID));
 	(*var)->name = NULL;
@@ -62,8 +58,7 @@ DECL_ID	**var;
 /*
  *	Free a linked list of variables.
  */
-free_var_list(list_ptr)
-DECL_ID	*list_ptr;
+void free_var_list(DECL_ID *list_ptr)
 {
 	DECL_ID	*next_ptr;
 
@@ -81,8 +76,7 @@ DECL_ID	*list_ptr;
 /*
  *	Malloc space for a DECL_MEMBER structure and return pointer.
  */
-get_element_ptr(element)
-DECL_MEMBER	**element;
+void get_element_ptr(DECL_MEMBER **element)
 {
 	DECL_MEMBER	*el_ptr;
 
@@ -111,8 +105,7 @@ DECL_MEMBER	**element;
 /*
  *	Free a DECL_MEMBER list.
  */
-free_decl_list(element)
-DECL_MEMBER	*element;
+void free_decl_list(DECL_MEMBER *element)
 {
 	DECL_MEMBER	*el_ptr;
 
@@ -139,8 +132,7 @@ DECL_MEMBER	*element;
 /*
  *	Malloc space for a procedure parameter
  */
-get_param_ptr(param)
-PARAM_LIST	**param;
+void get_param_ptr(PARAM_LIST **param)
 {
 	*param = (PARAM_LIST *) get_mem(sizeof(PARAM_LIST));
 	(*param)->next_param = NULL;
@@ -149,8 +141,7 @@ PARAM_LIST	**param;
 /*
  *	Free parameter list
  */
-free_param_list(param_list)
-PARAM_LIST	*param_list;
+void free_param_list(PARAM_LIST *param_list)
 {
 	PARAM_LIST	*param_ptr;
 
@@ -164,8 +155,7 @@ PARAM_LIST	*param_list;
 /*
  *	Malloc space for a DECLARE statement
  */
-get_decl_ptr(decl)
-DECL	**decl;
+void get_decl_ptr(DECL **decl)
 {
 	*decl = (DECL *) get_mem(sizeof(DECL));
 	(*decl)->decl_list = NULL;
@@ -175,8 +165,7 @@ DECL	**decl;
 /*
  *	Free DECL list
  */
-free_decl(decl_list)
-DECL	*decl_list;
+void free_decl(DECL *decl_list)
 {
 	DECL	*decl_ptr;
 
