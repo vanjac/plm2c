@@ -53,6 +53,3 @@ char *strcpy();
 char *strncpy();
 #endif
 
-#ifdef IBMPC
-int	sprintf();
-#endif
