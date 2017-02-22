@@ -4,6 +4,7 @@
 #include "cvt.h"
 #include "struct.h"
 #include "tokens.h"
+#include "main.h"
 
 BOOLEAN		syntax_error;
 

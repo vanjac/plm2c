@@ -6,6 +6,7 @@
 #include "struct.h"
 #include "tokens.h"
 #include "tkn_ext.h"
+#include "main.h"
 
 BOOLEAN		parsing_literal;
 TOKEN		literal_token, eof_token;

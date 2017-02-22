@@ -5,6 +5,7 @@
 #include "cvt.h"
 #include "struct.h"
 #include "tokens.h"
+#include "main.h"
 
 char	*out_string;
 char	last_out_ch;

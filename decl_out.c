@@ -4,6 +4,7 @@
 #include "cvt.h"
 #include "struct.h"
 #include "tokens.h"
+#include "main.h"
 
 extern	char	*text_ptr;
 extern	int	at_decl_count;

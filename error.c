@@ -6,6 +6,7 @@
 #include "struct.h"
 #include "tokens.h"
 #include "tkn_ext.h"
+#include "main.h"
 
 extern	BOOLEAN	syntax_error;
 

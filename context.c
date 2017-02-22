@@ -2,6 +2,7 @@
 #include "defs.h"
 #include "cvt.h"
 #include "struct.h"
+#include "main.h"
 
 /*
  *	Pointer to the current context

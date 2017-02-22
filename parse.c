@@ -7,6 +7,7 @@
 #include "struct.h"
 #include "cvt_id.h"
 #include "tokens.h"
+#include "main.h"
 
 extern	char	*text_buffer, *text_ptr;
 extern	int	line_count;

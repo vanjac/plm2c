@@ -10,6 +10,7 @@
 #include "struct.h"
 #include "tokens.h"
 #include "tkn_defs.h"
+#include "main.h"
 
 char	*text_buffer, *text_ptr;
 int	line_count;

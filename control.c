@@ -5,6 +5,7 @@
 #include "struct.h"
 #include "tokens.h"
 #include "tkn_ext.h"
+#include "main.h"
 
 extern	char	*text_buffer;
 extern	char	*text_ptr;

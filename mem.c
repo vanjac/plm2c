@@ -3,6 +3,7 @@
 #include "defs.h"
 #include "cvt.h"
 #include "struct.h"
+#include "main.h"
 
 /*
  *	Memory allocation and deallocation routines.
