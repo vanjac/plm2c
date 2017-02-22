@@ -24,10 +24,10 @@ know!
 The source code compiles under Unix.  I've compiled it on a Sun-4, a VAX
 running Ultrix, and a VAX running Mt. Xinu.  At one time I had a version that
 ran under MSDOS, but I can't guarantee it will now.  I've included a makefile
-for use with Turbo-C.  You need to define IBMPC to compile it.  What it could
-really use is tuning for a large memory model, as in it's present state, it
-can only handle small source files.  It could also benefit from a good man
-page.
+for use with Turbo-C.  You need to define IBMPC to compile it. *(NOTE: I removed
+this)*  What it could really use is tuning for a large memory model, as in it's
+present state, it can only handle small source files.  It could also benefit
+from a good man page.
 
 The converter expects source code to be in "proper" format (i.e. proper
 use of EXTERNAL declarations, and following of the Intel PL/M grammar as the

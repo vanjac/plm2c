@@ -1,6 +1,3 @@
-#ifdef IBMPC
-#include <alloc.h>
-#endif
 #include "misc.h"
 #include "defs.h"
 #include "cvt.h"
