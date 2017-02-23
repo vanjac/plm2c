@@ -14,6 +14,15 @@
 #define	CONVERT_CASE
 
 /*
+ *  If CONVERT_DOLLAR defined, convert $ to another character
+ *  Function names in cvt_id.h will have to be changed to include this
+ *  character.
+ */
+/*
+#define CONVERT_DOLLAR '_'
+*/
+
+/*
  *	If CONVERT_TYPES defined, use the following type conversions.
  */
 #define CONVERT_TYPES
